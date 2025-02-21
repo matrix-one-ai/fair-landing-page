@@ -20,11 +20,14 @@ const Card: React.FC<ICardProps> = ({
   contentClassName,
   ...rest
 }) => {
-  const [isCollapsed, { toggle: toggleIsCollapsed }] = useToggle(true);
+  const [
+    isCollapsed,
+    { toggle: toggleIsCollapsed, toggleOn: toggleOnIsCollapsed },
+  ] = useToggle(true);
 
   useEffect(() => {
-    toggleIsCollapsed();
-  }, [toggleIsCollapsed]);
+    toggleOnIsCollapsed();
+  }, [toggleOnIsCollapsed]);
 
   return (
     <div className={clsx("flex flex-col bg-main w-full", className)} {...rest}>
