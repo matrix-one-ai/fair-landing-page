@@ -38,6 +38,10 @@ module.exports = {
       },
       dropShadow: {
         button: "0px 6px 2px rgba(0, 0, 0, 0.25)",
+        agent_session: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+      },
+      boxShadow: {
+        agent_session: "0px 0px 30px #ACE1AF",
       },
     },
   },

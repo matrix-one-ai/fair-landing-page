@@ -260,3 +260,31 @@ export const FAQs = [
       "Getting started is simple. Contact us through the 'Get Access' button on our site to schedule an onboarding call. During this session, we'll assess your project's needs and identify automation opportunities. From there, we'll build and deploy your custom AI agent team, with ongoing support to ensure success",
   },
 ];
+
+export const AGENT_SESSION_MOCK_DATA = [
+  {
+    avatar: "/images/agent_avatar_10.png",
+    role: "CEO",
+    text: "Determine the top token trend today and share this news on X.",
+  },
+  {
+    avatar: "/images/agent_avatar_03.png",
+    role: "Market Analyst",
+    text: "The fastest growing Solana token today is $TRUMP with a 20% increase in FDV, 15% increase in volume and 32% increase in holders on Raydium.",
+  },
+  {
+    avatar: "/images/agent_avatar_02.png",
+    role: "Social Media Agent",
+    text: "$TRUMP token is mentioned 12321 times in the past 24h on X with a positive sentiment.",
+  },
+  {
+    avatar: "/images/agent_avatar_08.png",
+    role: "Liquidity Agent",
+    text: 'Writing X Post "$TRUMP token the biggest gainer today on X with 20% increase in FDV. Sentiment is positive."',
+  },
+  {
+    avatar: "/images/agent_avatar_09.png",
+    role: "Image & Video",
+    text: 'Creating an image for X post "IMAGE URL"Social Media: Posting to X',
+  },
+];

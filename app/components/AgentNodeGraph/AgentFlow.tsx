@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import {
   ReactFlow,
   useNodesState,
@@ -26,7 +26,8 @@ const CustomNodeFlow = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  // Handle window resize
+  const onResize = useCallback(() => {
     if (ref.current === null) return;
 
     setCenter(
@@ -34,7 +35,29 @@ const CustomNodeFlow = () => {
       ref.current.offsetHeight / 2,
       { zoom: 1 },
     );
+  }, [setCenter]);
 
+  // Stop React flow's default wheel behavior
+  const onWheel = useCallback((e: WheelEvent) => {
+    e.stopImmediatePropagation();
+  }, []);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    window.addEventListener("resize", onResize);
+    ref.current?.addEventListener("wheel", onWheel, {
+      capture: true,
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      ref.current?.removeEventListener("wheel", onWheel, { capture: true });
+    };
+  }, [onWheel, onResize]);
+
+  useEffect(() => {
     setNodes([
       {
         id: "agent-1",
@@ -59,7 +82,10 @@ const CustomNodeFlow = () => {
         animated: true,
       })) as never[],
     );
-  }, [setCenter, setEdges, setNodes]);
+
+    // Run resize handler initially
+    onResize();
+  }, [onResize, setCenter, setEdges, setNodes]);
 
   return (
     <ReactFlow
@@ -74,7 +100,7 @@ const CustomNodeFlow = () => {
       zoomOnPinch={false}
       zoomOnDoubleClick={false}
     >
-      <MiniMap />
+      <MiniMap className="hidden md:block" />
       <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
       <Controls />
     </ReactFlow>
