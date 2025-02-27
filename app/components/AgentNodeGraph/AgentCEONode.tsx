@@ -15,7 +15,7 @@ const AgentCEONode: React.FC<IAgentCEONode> = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center w-44 gap-1 p-6">
+      <div className="flex flex-col justify-center items-center w-44 gap-1 p-6 shadow-card">
         <Image
           src={avatar}
           width={300}

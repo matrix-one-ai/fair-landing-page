@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import clsx from "clsx";
 import { useToggle } from "@/app/hooks/useToggle";
 import { useOutsideClick } from "@/app/hooks/useOutsideClick";
+import ArrowIcon from "@/app/components/Icons/ArrowIcon";
 
 interface IDropdownProps extends React.HTMLAttributes<HTMLDivElement> {
   options: string[];
@@ -46,12 +47,12 @@ const Dropdown: React.FC<IDropdownProps> = ({
     <div className={clsx("relative w-full border-black", className)} {...rest}>
       <button
         onClick={handleOpen}
-        className="w-full h-6 flex items-center flex-row-reverse justify-between px-2 pt-0.5 text-left border border-inherit bg-gray rounded focus:outline-none"
+        className="w-full h-6 flex items-center flex-row-reverse justify-between px-2 text-left border border-inherit bg-gray rounded focus:outline-none"
       >
-        <span className="float-right transform transition-transform duration-200 text-xs scale-y-50">
-          {isOpen ? "▲" : "▼"}
+        <span className="float-right transform transition-transform duration-200 text-xs pb-0.5">
+          <ArrowIcon className={clsx(!isOpen && "rotate-180")} />
         </span>
-        {selectedOption || placeholder}
+        <span className="pt-0.5">{selectedOption || placeholder}</span>
       </button>
 
       {isOpen && (

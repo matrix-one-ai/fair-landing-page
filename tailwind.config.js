@@ -42,6 +42,8 @@ module.exports = {
       },
       boxShadow: {
         agent_session: "0px 0px 30px #ACE1AF",
+        agent_carousel_item: "0px 3px 6px 0px rgba(0, 0, 0, 0.4)",
+        card: "0px 5px 8px 0px rgba(0, 0, 0, 0.3)",
       },
     },
   },

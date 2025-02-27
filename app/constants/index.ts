@@ -46,7 +46,7 @@ export const AGENTS = [
     avatar: "/images/agent_avatar_04.png",
     role: "Airdrop Manager",
     description:
-      "Powered by AI TeePool an AI Agent that fairly launches and distributes your token to holders.",
+      "An Airdrop agent that measures the contributions of your community and airdrops to them automatically.",
     tools: [ETools.TELEGRAM, ETools.DISCORD],
     dataSources: [EDataSources.TELEGRAM, EDataSources.DISCORD],
     autonomyType: EAutonomyType.MANAGED,
@@ -56,7 +56,7 @@ export const AGENTS = [
     avatar: "/images/agent_avatar_05.png",
     role: "Github Agent",
     description:
-      "An Airdrop agent that measures the contributions of your community and airdrops to them automatically.",
+      "A Coder agent that can develop code in Python and commit to Github.",
     tools: [ETools.GITHUB],
     dataSources: [EDataSources.GITHUB],
     autonomyType: EAutonomyType.MANAGED,
@@ -66,7 +66,7 @@ export const AGENTS = [
     avatar: "/images/agent_avatar_06.png",
     role: "Webscraper",
     description:
-      "A Liquidity agent that constantly monitors liquidity pools on Meteora making sure liquidity ir provided at all values.",
+      "A Copywriter agent that create blog posts, social media posts, FAQ’s, email responses for your community in the tone of voice for your project.",
     tools: [ETools.METEORA],
     dataSources: [EDataSources.METEORA],
     autonomyType: EAutonomyType.MANAGED,
@@ -76,7 +76,7 @@ export const AGENTS = [
     avatar: "/images/agent_avatar_07.png",
     role: "Token Launch Agent",
     description:
-      "A Coder agent that can develop code in Python and commit to Github.",
+      "Powered by AI TeePool an AI Agent that fairly launches and distributes your token to holders.",
     tools: [ETools.PYTHON, ETools.GITBOOK, ETools.GITHUB],
     dataSources: [
       EDataSources.PYTHON,
@@ -90,7 +90,7 @@ export const AGENTS = [
     avatar: "/images/agent_avatar_08.png",
     role: "Liquidity Agent",
     description:
-      "A Copywriter agent that create blog posts, social media posts, FAQ’s, email responses for your community in the tone of voice for your project.",
+      "A Liquidity agent that constantly monitors liquidity pools on Meteora making sure liquidity ir provided at all values.",
     tools: [ETools.GRAMMARLY, ETools.TELEGRAM, ETools.DISCORD],
     dataSources: [
       EDataSources.GRAMMARLY,

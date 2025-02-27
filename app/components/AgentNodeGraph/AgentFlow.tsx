@@ -32,7 +32,7 @@ const CustomNodeFlow = () => {
 
     setCenter(
       ((AGENTS.length - 1) * 300) / 2 + 120,
-      ref.current.offsetHeight / 2,
+      ref.current.offsetHeight / 2 - (window.innerWidth > 768 ? 120 : 0),
       { zoom: 1 },
     );
   }, [setCenter]);
@@ -90,7 +90,7 @@ const CustomNodeFlow = () => {
   return (
     <ReactFlow
       ref={ref}
-      className="border border-orange_brand border-dashed rounded-lg"
+      className="border border-orange_brand border-dashed rounded-[30px] shadow-card"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}

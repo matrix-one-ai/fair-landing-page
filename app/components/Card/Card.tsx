@@ -30,7 +30,7 @@ const Card: React.FC<ICardProps> = ({
   }, [toggleOnIsCollapsed]);
 
   return (
-    <div className={clsx("flex flex-col bg-main w-full", className)} {...rest}>
+    <div className={clsx("flex flex-col w-full", className)} {...rest}>
       {/* Header */}
       <CardHeader
         title={title}

@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import ArrowIcon from "@/app/components/Icons/ArrowIcon";
 
 interface ICardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
@@ -16,7 +17,7 @@ const CardHeader: React.FC<ICardHeaderProps> = ({
   return (
     <div
       className={clsx(
-        "bg-black text-white flex justify-between items-center px-4 h-10 cursor-pointer flex-none rounded-md",
+        "bg-black text-white flex justify-between items-center px-4 h-10 cursor-pointer flex-none rounded-md shadow-card",
         !isCollapsed && "rounded-b-none",
         className,
       )}
@@ -25,8 +26,8 @@ const CardHeader: React.FC<ICardHeaderProps> = ({
     >
       {/* Title */}
       <span className="truncate">{title}</span>
-      <span className="float-right transform transition-transform duration-200 text-xs scale-y-50">
-        {isCollapsed ? "▼" : "▲"}
+      <span className="float-right transform transition-transform duration-200 text-xs">
+        <ArrowIcon className={clsx(!isCollapsed && "rotate-180")} />
       </span>
     </div>
   );

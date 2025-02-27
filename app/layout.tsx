@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main>
+        <main className="flex justify-center">
           {children}
           {modal}
         </main>

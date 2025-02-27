@@ -24,7 +24,7 @@ const AgentNode: React.FC<IAgentNode> = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center w-60 gap-3 p-6 text-black font-bold text-xs text-left">
+      <div className="flex flex-col justify-center items-center w-60 gap-3 p-6 text-black font-bold text-xs text-left shadow-card">
         <div className="flex w-full gap-2">
           <Image
             src={avatar}
