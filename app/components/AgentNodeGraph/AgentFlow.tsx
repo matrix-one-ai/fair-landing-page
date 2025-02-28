@@ -100,7 +100,7 @@ const CustomNodeFlow = () => {
       zoomOnPinch={false}
       zoomOnDoubleClick={false}
     >
-      <MiniMap className="hidden md:block" />
+      {/* <MiniMap className="hidden md:block" /> */}
       <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
       <Controls />
     </ReactFlow>

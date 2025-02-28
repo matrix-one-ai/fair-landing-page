@@ -8,17 +8,11 @@ import Marquee from "react-fast-marquee";
 import Header from "./components/Header";
 import AgentFlow from "./components/AgentNodeGraph/AgentFlow";
 import Footer from "./components/Footer";
-import Card from "./components/Card/Card";
-import {
-  AGENT_ACTIONS,
-  AGENTS,
-  BRANDS,
-  FAQs,
-  WORKS_WITH_BRANDS,
-} from "./constants";
+import { AGENT_ACTIONS, AGENTS, BRANDS, WORKS_WITH_BRANDS } from "./constants";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AgentSession from "./components/AgentSession";
+import FAQ from "./components/FAQ";
 
 const ClientPage = () => {
   // Decide how many avatars to show initially
@@ -158,12 +152,12 @@ const ClientPage = () => {
             </Marquee>
           </div>
         </div>
-        <div className="py-3 w-full h-[840px] md:h-[1000px] px-7 flex justify-center relative bg-gradient-to-b from-gray to-gray_secondary">
+        <div className="py-3 w-full h-[940px] md:h-[1070px] px-7 flex justify-center relative bg-gradient-to-b from-gray to-gray_secondary">
           <div className="relative w-full max-w-[1400px]">
             <ReactFlowProvider>
               <AgentFlow />
             </ReactFlowProvider>
-            <div className="absolute top-0 left-7 right-7 justify-between z-1 p-10 hidden md:flex">
+            <div className="absolute top-0 left-0 right-0 justify-between z-1 p-10 hidden md:flex">
               <div className="text-black uppercase">
                 <p className="text-3xl lg:text-4xl font-bold">
                   An Enterprise Hosted Multi-agent Team
@@ -179,6 +173,17 @@ const ClientPage = () => {
                 <p className="text-black text-right text-xs lg:text-base">
                   drag and drop team management tool.
                 </p>
+              </div>
+            </div>
+            <div className="absolute w-full bottom-0 z-1 p-10 flex justify-center md:justify-end">
+              <div className="flex gap-6 items-center">
+                <p className="text-black text-right text-xs lg:text-base uppercase hidden md:block">
+                  This is an example team <br />
+                  Work with us to create your own custom team
+                </p>
+                <button className="bg-black rounded-[10px] drop-shadow-button text-white font-bold px-6 pb-4 pt-5 w-40 hover:bg-orange_brand hover:text-black">
+                  GET ACCESS
+                </button>
               </div>
             </div>
           </div>
@@ -474,21 +479,7 @@ const ClientPage = () => {
           </div>
         </div>
         <div className="py-3 px-7 flex justify-center bg-gradient-to-b from-gray to-gray_secondary">
-          <div className="w-full max-w-[1400px] flex flex-col items-center">
-            <p className="font-bold text-center text-4xl uppercase m-14">
-              FAQs
-            </p>
-            <div className="w-full max-w-[850px] flex flex-col gap-6">
-              {FAQs.map((faq, index) => (
-                <Card key={`faq-${index}`} title={faq.title}>
-                  <div
-                    className="flex flex-col gap-0.5"
-                    dangerouslySetInnerHTML={{ __html: faq.content }}
-                  />
-                </Card>
-              ))}
-            </div>
-          </div>
+          <FAQ />
         </div>
       </div>
       <Footer />
