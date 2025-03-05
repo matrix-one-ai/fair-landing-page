@@ -18,38 +18,44 @@ const Footer = () => {
           </div>
           <div className="flex w-full md:w-0 md:flex-grow md:max-w-[500px] justify-between gap-4 flex-wrap">
             <Link
-              href="/"
+              href="https://twitter.com/matrixoneai"
               className="justify-center items-center flex hover:text-orange_brand"
+              target="_blank"
             >
               X[Twitter]
             </Link>
             <Link
-              href="/"
+              href="https://t.me/fairdottoken"
               className="justify-center items-center flex hover:text-orange_brand"
+              target="_blank"
             >
               Telegram
             </Link>
             <Link
-              href="/"
+              href="https://discord.gg/matrixone"
               className="justify-center items-center flex hover:text-orange_brand"
+              target="_blank"
             >
               Discord
             </Link>
             <Link
-              href="/"
+              href="https://docs.matrix.one"
               className="justify-center items-center flex hover:text-orange_brand"
+              target="_blank"
             >
               Gitbook
             </Link>
             <Link
-              href="/"
+              href="https://matrixoneai.medium.com/"
               className="justify-center items-center flex hover:text-orange_brand"
+              target="_blank"
             >
               Blog
             </Link>
             <Link
-              href="/"
+              href="https://dune.com/fairtoken/fairtoken"
               className="justify-center items-center flex hover:text-orange_brand"
+              target="_blank"
             >
               Tokenomics
             </Link>

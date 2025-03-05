@@ -23,30 +23,35 @@ const Header = () => {
           <Link
             href="https://twitter.com/matrixoneai"
             className="bg-black w-7 h-7 justify-center items-center rounded-md flex"
+            target="_blank"
           >
             <XIcon />
           </Link>
           <Link
             href="https://discord.gg/matrixone"
             className="bg-black w-7 h-7 justify-center items-center rounded-md flex"
+            target="_blank"
           >
             <DiscordIcon />
           </Link>
           <Link
-            href="/"
+            href="https://docs.matrix.one/"
             className="bg-black w-7 h-7 justify-center items-center rounded-md flex"
+            target="_blank"
           >
             <BookIcon />
           </Link>
           <Link
             href="https://github.com/matrix-one-ai"
             className="bg-black w-7 h-7 justify-center items-center rounded-md flex"
+            target="_blank"
           >
             <GithubIcon />
           </Link>
           <Link
-            href="/"
+            href="https://matrixoneai.medium.com/"
             className="bg-black w-7 h-7 justify-center items-center rounded-md flex"
+            target="_blank"
           >
             <UnknownIcon />
           </Link>
