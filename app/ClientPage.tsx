@@ -41,7 +41,7 @@ const ClientPage = () => {
             <span className="text-center md:text-right font-bold text-5xl uppercase">
               Deploy, Launch, & Automate Any Crypto Project
             </span>
-            <span className="text-center md:text-right">
+            <span className="text-center md:text-right uppercase">
               Cut costs, streamline operations, and scale your crypto project
               effortlessly
             </span>
@@ -260,7 +260,7 @@ const ClientPage = () => {
       </div>
       <div className="py-3 px-7 flex justify-center">
         <div className="w-full max-w-[1400px] rounded-3xl border border-black flex p-6 lg:p-10 justify-between items-center bg-orange_brand lg:flex-row flex-col gap-4 shadow-card">
-          <p className="font-bold text-4xl uppercase text-mint_brand pt-2">
+          <p className="font-bold text-4xl uppercase text-black pt-2">
             Available LLMs
           </p>
           <div className="flex justify-between w-full lg:w-0 lg:flex-grow lg:max-w-[500px]">

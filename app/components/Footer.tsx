@@ -78,12 +78,6 @@ const Footer = () => {
             >
               Privacy Policy
             </Link>
-            <Link
-              href="/"
-              className="justify-center items-center flex hover:text-orange_brand"
-            >
-              Cookies
-            </Link>
           </div>
         </div>
       </div>
