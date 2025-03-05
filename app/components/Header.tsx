@@ -50,9 +50,12 @@ const Header = () => {
           >
             <UnknownIcon />
           </Link>
-          <button className="bg-orange_brand rounded-[10px] drop-shadow-button text-black font-bold px-6 pb-4 pt-5 hover:bg-black hover:text-white">
+          <Link
+            href="/get-access"
+            className="bg-orange_brand rounded-[10px] drop-shadow-button text-black font-bold px-6 pb-4 pt-5 hover:bg-black hover:text-white"
+          >
             GET ACCESS
-          </button>
+          </Link>
         </div>
       </div>
     </div>
