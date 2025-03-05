@@ -95,3 +95,11 @@ export enum EAmount {
   TEN = "10",
   FIFTY = "50",
 }
+
+export type TFairUser = {
+  id: number;
+  twitter_handle: string;
+  wallet_address: string;
+  invite_codes: string;
+  created_at: string;
+};

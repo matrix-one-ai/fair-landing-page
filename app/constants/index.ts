@@ -288,3 +288,5 @@ export const AGENT_SESSION_MOCK_DATA = [
     text: 'Creating an image for X post "IMAGE URL"Social Media: Posting to X',
   },
 ];
+
+export const BLOCKED_WALLET_NAMES = ["Trust"];
