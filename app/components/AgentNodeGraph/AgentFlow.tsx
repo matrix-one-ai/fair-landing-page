@@ -3,7 +3,6 @@ import {
   ReactFlow,
   useNodesState,
   useEdgesState,
-  MiniMap,
   Controls,
   Background,
   BackgroundVariant,
