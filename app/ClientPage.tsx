@@ -16,32 +16,30 @@ import Link from "next/link";
 const ClientPage = () => {
   // Decide how many avatars to show initially
   const avatarSlidesToShow = useMemo(() => {
-    if (window.innerWidth < 480) {
+    if (window.innerWidth < 600) {
       return 2;
-    } else if (window.innerWidth < 640) {
+    } else if (window.innerWidth < 720) {
       return 3;
-    } else if (window.innerWidth < 768) {
+    } else if (window.innerWidth < 880) {
       return 4;
     } else if (window.innerWidth < 1024) {
-      return 2;
-    } else if (window.innerWidth < 1280) {
-      return 3;
-    } else if (window.innerWidth < 1600) {
-      return 4;
-    } else {
       return 5;
+    } else if (window.innerWidth < 1300) {
+      return 2;
+    } else {
+      return 3;
     }
   }, []);
 
   return (
     <div className="flex w-full flex-col text-black">
       <div className="flex justify-center bg-gradient-to-b from-gray_secondary to-gray">
-        <div className="w-full max-w-[1400px] flex flex-col px-7 justify-between pt-16 pb-8 md:flex-row gap-10 bg-gradient-to-b from-gray_secondary to-gray">
-          <div className="flex flex-col gap-6 items-center md:items-end flex-1">
-            <span className="text-center md:text-right font-bold text-5xl uppercase">
+        <div className="w-full max-w-[1400px] flex flex-col px-7 justify-between pt-16 pb-8 lg:flex-row gap-10 bg-gradient-to-b from-gray_secondary to-gray">
+          <div className="flex flex-col gap-6 items-center lg:items-end flex-1">
+            <span className="text-center lg:text-right font-bold text-5xl uppercase">
               Deploy, Launch, & Automate Any Crypto Project
             </span>
-            <span className="text-center md:text-right uppercase">
+            <span className="text-center lg:text-right uppercase">
               Cut costs, streamline operations, and scale your crypto project
               effortlessly
             </span>
@@ -52,24 +50,24 @@ const ClientPage = () => {
               GET ACCESS
             </Link>
           </div>
-          <div className="w-full h-[250px] md:w-0 md:h-auto md:flex-1">
+          <div className="w-full h-[200px] lg:w-0 lg:h-auto lg:flex-1">
             <Slider
               className="cursor-pointer"
               responsive={[
                 {
-                  breakpoint: 480,
+                  breakpoint: 600,
                   settings: {
                     slidesToShow: 2,
                   },
                 },
                 {
-                  breakpoint: 640,
+                  breakpoint: 720,
                   settings: {
                     slidesToShow: 3,
                   },
                 },
                 {
-                  breakpoint: 768,
+                  breakpoint: 880,
                   settings: {
                     slidesToShow: 4,
                   },
@@ -77,25 +75,19 @@ const ClientPage = () => {
                 {
                   breakpoint: 1024,
                   settings: {
+                    slidesToShow: 5,
+                  },
+                },
+                {
+                  breakpoint: 1300,
+                  settings: {
                     slidesToShow: 2,
                   },
                 },
                 {
-                  breakpoint: 1280,
+                  breakpoint: 1400,
                   settings: {
                     slidesToShow: 3,
-                  },
-                },
-                {
-                  breakpoint: 1600,
-                  settings: {
-                    slidesToShow: 4,
-                  },
-                },
-                {
-                  breakpoint: 1920,
-                  settings: {
-                    slidesToShow: 5,
                   },
                 },
               ]}
@@ -123,7 +115,7 @@ const ClientPage = () => {
                         alt=""
                       />
                     </div>
-                    <p className="text-center truncate group-hover:text-orange_brand uppercase">
+                    <p className="text-center truncate group-hover:text-orange_brand uppercase text-xs lg:text-base">
                       {role}
                     </p>
                   </div>
