@@ -265,6 +265,7 @@ const ClientPage = () => {
           </p>
           <div className="flex justify-between w-full lg:w-0 lg:flex-grow lg:max-w-[500px]">
             {[
+              "/images/image_23.png",
               "/images/image_07.png",
               "/images/image_08.png",
               "/images/image_09.png",

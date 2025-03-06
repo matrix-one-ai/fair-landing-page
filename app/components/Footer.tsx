@@ -65,7 +65,7 @@ const Footer = () => {
       <div className="flex justify-center w-full p-4 bg-black text-gray gap-4">
         <div className="flex flex-col w-full max-w-[1400px] md:flex-row justify-between items-center ">
           <p>© 2025 FAIR All rights reserved. Matrix Uno Ltd.</p>
-          <div className="flex w-full md:w-0 md:flex-grow md:max-w-[400px] justify-between gap-4">
+          <div className="flex w-full md:w-0 md:flex-grow md:max-w-[300px] justify-between gap-4">
             <Link
               href="/"
               className="justify-center items-center flex hover:text-orange_brand"

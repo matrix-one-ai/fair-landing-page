@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useEffect, useState } from "react";
 import {
   usePrivy,
   useLogin,
@@ -8,9 +9,10 @@ import {
   User,
   LinkedAccountWithMetadata,
 } from "@privy-io/react-auth";
+import copy from "clipboard-copy";
+import clsx from "clsx";
 import FAQ from "@/app/components/FAQ";
-import { useCallback, useEffect, useState } from "react";
-import { generateInvitationCodes } from "../utils/generateInviteCodes";
+import { generateInvitationCodes } from "@/app/utils/generateInviteCodes";
 import { TFairUser } from "@/app/types";
 import { useToggle } from "@/app/hooks/useToggle";
 
@@ -23,14 +25,8 @@ export default function Page() {
       toggleOff: toggleOffShowInvitationCodesModal,
     },
   ] = useToggle(false);
-  const [
-    showVerifiedXModal,
-    {
-      toggleOn: toggleOnShowVerifiedXModal,
-      toggleOff: toggleOffShowVerifiedXModal,
-    },
-  ] = useToggle(false);
   const [fairUser, setFairUser] = useState<TFairUser | null>(null);
+  const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
   // Create user
   const getUser = useCallback(async () => {
@@ -122,29 +118,12 @@ export default function Page() {
 
   // Callback for privy link account success
   const onLinkAccountSuccess = useCallback(async () => {
-    const newFairUser = await createUser();
-
-    if (newFairUser) {
-      const currentAction = localStorage.getItem("currentAction");
-
-      if (currentAction === "invite_code") {
-        toggleOnShowInvitationCodesModal();
-      } else if (currentAction === "verify_x") {
-        toggleOnShowVerifiedXModal();
-      }
-
-      localStorage.setItem("currentAction", "");
-    }
-  }, [
-    createUser,
-    toggleOnShowInvitationCodesModal,
-    toggleOnShowVerifiedXModal,
-  ]);
+    await createUser();
+  }, [createUser]);
 
   // Callback for privy link account failed
   const onLinkAccountFailed = useCallback((error: PrivyErrorCode) => {
     console.warn("Linking account failed: ", error);
-    localStorage.setItem("currentAction", "");
   }, []);
 
   const { linkTwitter, linkWallet } = useLinkAccount({
@@ -165,10 +144,6 @@ export default function Page() {
     }) => {
       const { wallet, twitter } = user;
 
-      const currentAction = localStorage.getItem("currentAction");
-
-      if (!currentAction) return;
-
       // After login with only X, then refresh the page. Without below timeout delay, the page will be crashed with privy ready status. Privy Bug.
       setTimeout(() => {
         // Link actions
@@ -185,7 +160,6 @@ export default function Page() {
   // Callback for privy login failed
   const onLoginFailed = useCallback((error: PrivyErrorCode) => {
     console.error("Login failed: ", error);
-    localStorage.setItem("currentAction", "");
   }, []);
 
   const { login } = useLogin({
@@ -195,8 +169,6 @@ export default function Page() {
 
   // Handle invite code button click
   const handleInviteCodeButtonClick = useCallback(() => {
-    localStorage.setItem("currentAction", "invite_code");
-
     if (user === null) {
       login();
     } else {
@@ -221,8 +193,6 @@ export default function Page() {
 
   // Handle verify X button click
   const handleVerifyXButtonClick = useCallback(() => {
-    localStorage.setItem("currentAction", "verify_x");
-
     if (user === null) {
       login();
     } else {
@@ -233,17 +203,20 @@ export default function Page() {
       } else if (!wallet) {
         linkWallet();
       } else if (fairUser) {
-        toggleOnShowVerifiedXModal();
+        window.open("https://dune.com/fairtoken/fairtoken", "_blank");
       }
     }
-  }, [
-    fairUser,
-    linkTwitter,
-    linkWallet,
-    login,
-    toggleOnShowVerifiedXModal,
-    user,
-  ]);
+  }, [fairUser, linkTwitter, linkWallet, login, user]);
+
+  const handleCodeCopy = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const code = e.currentTarget.value;
+
+      setCopiedCode(code);
+      copy(code);
+    },
+    [],
+  );
 
   return (
     <div className="flex w-full flex-col text-black items-center">
@@ -290,7 +263,7 @@ export default function Page() {
                 onClick={handleInviteCodeButtonClick}
                 disabled={!ready}
               >
-                GET INVITE CODES
+                {fairUser ? "VIEW YOUR INVITE CODES" : "GET INVITE CODES"}
               </button>
             </div>
             <div className="bg-mint_brand rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1">
@@ -309,7 +282,7 @@ export default function Page() {
                 onClick={handleVerifyXButtonClick}
                 disabled={!ready}
               >
-                VERIFY MY X
+                {fairUser ? "CHECK MY MARKETING" : "VERIFY MY X"}
               </button>
             </div>
           </div>
@@ -325,23 +298,38 @@ export default function Page() {
             className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-100"
             onClick={toggleOffShowInvitationCodesModal}
           />
-          <div className="flex flex-col p-4 gap-4 text-white bg-black border-black border rounded-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            {JSON.parse(fairUser.invite_codes).map((code: string) => (
-              <button key={code} className="p-2 border-gray border rounded">
-                {code}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-      {showVerifiedXModal && fairUser && (
-        <div className="fixed top-0 left-0 w-full h-full">
-          <div
-            className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-100"
-            onClick={toggleOffShowVerifiedXModal}
-          />
-          <div className="flex flex-col p-4 gap-4 text-white bg-black border-black border rounded-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            You have been verified on X
+          <div className="w-4/5 max-w-[600px] bg-black rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="w-full">
+              <p className="mb-1 font-bold text-2xl lg:text-4xl text-orange_brand uppercase">
+                YOUR UNIQUE INVITE CODES
+              </p>
+              <p className="mb-2 text-sm lg:text-base text-gray uppercase">
+                THESE ARE YOUR EXCLUSIVE CODES. CLICK TO COPY AND SHARE WITH ANY
+                OTHER PROJECTS SO THEY GET PRIORITIZED ACCESS TO FAIR. YOU WILL
+                RECEIVE $FAIR FOR ANY PROJECT THAT WORKS WITH US USING THESE
+                CODES. CLICK TO COPY THE CODE AND INVITE URL TO SHARE.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-1 lg:grid-cols-3">
+              {JSON.parse(fairUser.invite_codes).map((code: string) => (
+                <button
+                  key={code}
+                  className={clsx(
+                    "relative p-2 border-gray text-sm lg:text-base text-gray border rounded",
+                    copiedCode === code && "!bg-gray !text-black",
+                  )}
+                  value={code}
+                  onClick={handleCodeCopy}
+                >
+                  {code}
+                  {copiedCode === code && (
+                    <span className="text-orange_brand text-2xl absolute top-1/2 right-4 -translate-y-1/2">
+                      ✔
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}

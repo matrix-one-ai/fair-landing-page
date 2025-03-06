@@ -19,6 +19,7 @@
     "@vercel/analytics": "^1.4.1",
     "@xyflow/react": "^12.4.3",
     "ai": "^4.0.13",
+    "clipboard-copy": "^4.0.1",
     "clsx": "^2.1.1",
     "nanoid": "^5.1.2",
     "next": "14.2.18",
