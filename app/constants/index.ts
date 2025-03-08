@@ -1,4 +1,10 @@
-import { EAutonomyType, EDataSources, ETools } from "@/app/types";
+import {
+  EAutonomyType,
+  EDataSources,
+  EFramework,
+  ELLM,
+  ETools,
+} from "@/app/types";
 
 export const AGENTS = [
   {
@@ -7,6 +13,8 @@ export const AGENTS = [
     role: "Community Agent",
     description:
       "A community agent managing your community across Discord and Telegram.",
+    llm: ELLM.LLAMA_3_1_405B,
+    framework: EFramework.FAIR,
     tools: [ETools.DISCORD, ETools.TELEGRAM],
     dataSources: [EDataSources.X],
     autonomyType: EAutonomyType.MANAGED,
@@ -17,14 +25,16 @@ export const AGENTS = [
     role: "Social Media Agent",
     description:
       "A social media agent replying, mentioning, reposting and posting project relevant content across X, Instagram, Farcaster or TikTok",
+    llm: ELLM.GROK_2,
+    framework: EFramework.PIPPIN,
     tools: [ETools.X, ETools.INSTAGRAM, ETools.FARCASTER, ETools.TIKTOK],
     dataSources: [
       EDataSources.X,
       EDataSources.INSTAGRAM,
       EDataSources.FARCASTER,
-      EDataSources.TIKTOK,
+      EDataSources.YOUTUBE,
     ],
-    autonomyType: EAutonomyType.MANAGED,
+    autonomyType: EAutonomyType.FULL_AUTONOMOUS,
   },
   {
     name: "Judge",
@@ -32,14 +42,22 @@ export const AGENTS = [
     role: "Market Analyst",
     description:
       "A market analyst querying data across CoinGecko, CoinMarketCap, Helius, Solscan and X relevant to your project.",
-    tools: [ETools.COINGECKO, ETools.COINMARKETCAP, ETools.SOLSCAN, ETools.X],
+    llm: ELLM.GROK_2,
+    framework: EFramework.PIPPIN,
+    tools: [
+      ETools.DISCORD,
+      ETools.TELEGRAM,
+      ETools.TRADINGVIEW,
+      ETools.CACULATOR,
+    ],
     dataSources: [
+      EDataSources.X,
       EDataSources.COINGECKO,
       EDataSources.COINMARKETCAP,
+      EDataSources.UNKNOWN,
       EDataSources.SOLSCAN,
-      EDataSources.X,
     ],
-    autonomyType: EAutonomyType.MANAGED,
+    autonomyType: EAutonomyType.FULL_AUTONOMOUS,
   },
   {
     name: "Sky",
@@ -47,9 +65,15 @@ export const AGENTS = [
     role: "Airdrop Manager",
     description:
       "An Airdrop agent that measures the contributions of your community and airdrops to them automatically.",
-    tools: [ETools.TELEGRAM, ETools.DISCORD],
-    dataSources: [EDataSources.TELEGRAM, EDataSources.DISCORD],
-    autonomyType: EAutonomyType.MANAGED,
+    llm: ELLM.GEMINI_2_0,
+    framework: EFramework.PIPPIN,
+    tools: [ETools.AI_POOL],
+    dataSources: [
+      EDataSources.RAYDIUM,
+      EDataSources.METEORA,
+      EDataSources.PUMPFUN,
+    ],
+    autonomyType: EAutonomyType.FULL_AUTONOMOUS,
   },
   {
     name: "Zek",
@@ -57,9 +81,11 @@ export const AGENTS = [
     role: "Github Agent",
     description:
       "A Coder agent that can develop code in Python and commit to Github.",
-    tools: [ETools.GITHUB],
-    dataSources: [EDataSources.GITHUB],
-    autonomyType: EAutonomyType.MANAGED,
+    llm: ELLM.CHATGPT_O_3_MINI,
+    framework: EFramework.FAIR,
+    tools: [ETools.DISCORD, ETools.SEND_AI, ETools.GOOGLE_SHEET],
+    dataSources: [EDataSources.PHANTOM],
+    autonomyType: EAutonomyType.SEMI_AUTONOMOUS,
   },
   {
     name: "Jup",
@@ -67,9 +93,16 @@ export const AGENTS = [
     role: "Webscraper",
     description:
       "A Copywriter agent that create blog posts, social media posts, FAQ’s, email responses for your community in the tone of voice for your project.",
-    tools: [ETools.METEORA],
-    dataSources: [EDataSources.METEORA],
-    autonomyType: EAutonomyType.MANAGED,
+    llm: ELLM.DEEPSEEK_V3,
+    framework: EFramework.ELIZA_OS,
+    tools: [ETools.SEND_AI],
+    dataSources: [
+      EDataSources.RAYDIUM,
+      EDataSources.METEORA,
+      EDataSources.JUPITER,
+      EDataSources.UNKNOWN,
+    ],
+    autonomyType: EAutonomyType.FULL_AUTONOMOUS,
   },
   {
     name: "Pyth",
@@ -77,13 +110,11 @@ export const AGENTS = [
     role: "Token Launch Agent",
     description:
       "Powered by AI TeePool an AI Agent that fairly launches and distributes your token to holders.",
-    tools: [ETools.PYTHON, ETools.GITBOOK, ETools.GITHUB],
-    dataSources: [
-      EDataSources.PYTHON,
-      EDataSources.GITBOOK,
-      EDataSources.GITHUB,
-    ],
-    autonomyType: EAutonomyType.MANAGED,
+    llm: ELLM.LLAMA_3_2_70b,
+    framework: EFramework.VIRTUALS,
+    tools: [ETools.PYTHON, ETools.GITHUB],
+    dataSources: [EDataSources.GITHUB],
+    autonomyType: EAutonomyType.MANUAL,
   },
   {
     name: "Shake",
@@ -91,12 +122,10 @@ export const AGENTS = [
     role: "Liquidity Agent",
     description:
       "A Liquidity agent that constantly monitors liquidity pools on Meteora making sure liquidity ir provided at all values.",
-    tools: [ETools.GRAMMARLY, ETools.TELEGRAM, ETools.DISCORD],
-    dataSources: [
-      EDataSources.GRAMMARLY,
-      EDataSources.TELEGRAM,
-      EDataSources.DISCORD,
-    ],
+    llm: ELLM.CHATGPT_O_3_MINI,
+    framework: EFramework.FAIR,
+    tools: [ETools.GRAMMARLY, ETools.GITBOOK, ETools.MASHABLE, ETools.NOTION],
+    dataSources: [EDataSources.MASHABLE, EDataSources.GITHUB],
     autonomyType: EAutonomyType.MANAGED,
   },
   {
@@ -105,8 +134,10 @@ export const AGENTS = [
     role: "Image & Video",
     description:
       "An Image & Video AI Agent that creates unique image and video content for your project to be shared with your community.",
-    tools: [ETools.PUMPFUN],
-    dataSources: [EDataSources.PUMPFUN],
+    llm: ELLM.DALL_E_3,
+    framework: EFramework.FAIR,
+    tools: [ETools.DISCORD, ETools.TELEGRAM],
+    dataSources: [],
     autonomyType: EAutonomyType.MANAGED,
   },
 ];
@@ -167,6 +198,7 @@ export const TOOL_ICONS = {
   [ETools.YOUTUBE]: "/images/youtube.png",
   [ETools.UNKNOWN]: "/images/unknown.png",
   [ETools.X]: "/images/x.png",
+  [ETools.AI_POOL]: "/images/ai_pool.png",
 };
 
 export const DATA_SOURCE_ICONS = {
@@ -196,6 +228,7 @@ export const DATA_SOURCE_ICONS = {
   [EDataSources.YOUTUBE]: "/images/youtube.png",
   [EDataSources.UNKNOWN]: "/images/unknown.png",
   [EDataSources.X]: "/images/x.png",
+  [EDataSources.AI_POOL]: "/images/ai_pool.png",
 };
 
 export const FAQs = [

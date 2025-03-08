@@ -2,7 +2,13 @@ import { Handle, Position } from "@xyflow/react";
 import Image from "next/image";
 import React from "react";
 import Dropdown from "@/app/components/Dropdown";
-import { EAutonomyType, EDataSources, ETools } from "@/app/types";
+import {
+  EAutonomyType,
+  EDataSources,
+  EFramework,
+  ELLM,
+  ETools,
+} from "@/app/types";
 import { DATA_SOURCE_ICONS, TOOL_ICONS } from "@/app/constants";
 
 interface IAgentNode {
@@ -11,6 +17,8 @@ interface IAgentNode {
     avatar: string;
     role: string;
     description: string;
+    llm: ELLM;
+    framework: EFramework;
     tools: ETools[];
     dataSources: EDataSources[];
     autonomyType: EAutonomyType;
@@ -19,7 +27,17 @@ interface IAgentNode {
 }
 
 const AgentNode: React.FC<IAgentNode> = ({
-  data: { name, avatar, role, description, tools, dataSources, autonomyType },
+  data: {
+    name,
+    avatar,
+    role,
+    description,
+    llm,
+    framework,
+    tools,
+    dataSources,
+    autonomyType,
+  },
   isConnectable,
 }) => {
   return (
@@ -46,31 +64,11 @@ const AgentNode: React.FC<IAgentNode> = ({
         </div>
         <div className="flex flex-col gap-1 w-full">
           <p>Framework</p>
-          <Dropdown
-            options={[
-              "FAIR",
-              "ElizaOS",
-              "Griffain",
-              "Dolion",
-              "Pippin",
-              "ZerePy",
-              "Virtuals",
-              "CreatorBid",
-            ]}
-            value="FAIR"
-          />
+          <Dropdown options={Object.values(EFramework)} value={framework} />
         </div>
         <div className="flex flex-col gap-1 w-full">
           <p>LLM</p>
-          <Dropdown
-            options={[
-              "ChatGpt 4",
-              "ChatGpt o3 - Mini",
-              "Google Gemini",
-              "Grok",
-            ]}
-            value="ChatGpt 4"
-          />
+          <Dropdown options={Object.values(ELLM)} value={llm} />
         </div>
         <div className="flex flex-col gap-1 w-full bg-gray p-1">
           <div className="flex gap-1">

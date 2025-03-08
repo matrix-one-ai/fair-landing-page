@@ -149,7 +149,7 @@ const ClientPage = () => {
           <ReactFlowProvider>
             <AgentFlow />
           </ReactFlowProvider>
-          <div className="absolute top-0 left-0 right-0 justify-between z-1 p-10 hidden md:flex">
+          <div className="absolute top-0 left-0 right-0 justify-between z-1 p-10 hidden md:flex pointer-events-none">
             <div className="text-black uppercase">
               <p className="text-3xl lg:text-4xl font-bold">
                 An Enterprise Hosted Multi-agent Team
@@ -167,7 +167,7 @@ const ClientPage = () => {
               </p>
             </div>
           </div>
-          <div className="absolute w-full bottom-0 z-1 p-10 flex justify-center md:justify-end">
+          <div className="absolute w-full bottom-0 z-1 p-10 flex justify-center md:justify-end pointer-events-none">
             <div className="flex gap-6 items-center">
               <p className="text-black text-right text-xs lg:text-base uppercase hidden md:block">
                 This is an example team <br />
@@ -175,7 +175,7 @@ const ClientPage = () => {
               </p>
               <Link
                 href="/get-access"
-                className="bg-black rounded-[10px] drop-shadow-button text-white font-bold px-6 pb-4 pt-5 w-40 hover:bg-orange_brand hover:text-black"
+                className="bg-black rounded-[10px] drop-shadow-button text-white font-bold px-6 pb-4 pt-5 w-40 hover:bg-orange_brand hover:text-black pointer-events-auto"
               >
                 GET ACCESS
               </Link>
@@ -316,7 +316,7 @@ const ClientPage = () => {
           </div>
           <div className="flex flex-col lg:grid lg:grid-flow-row lg:grid-rows-9 gap-6">
             <div className="row-span-4 bg-gradient-to-b from-transparent to-black/20 flex flex-col p-6 lg:p-10 rounded-3xl border border-black shadow-card">
-              <p className="mb-3 font-bold text-4xl uppercase text-orange_brand">
+              <p className="mb-3 font-bold text-4xl uppercase text-black">
                 Private and Secure Data
               </p>
               <div className="lg:h-0 lg:flex-grow lg:flex lg:justify-between lg:flex-col">
@@ -341,7 +341,7 @@ const ClientPage = () => {
               </div>
             </div>
             <div className="row-span-5 bg-orange_brand flex flex-col p-6 lg:p-10 rounded-3xl border border-black shadow-card">
-              <p className="mb-3 font-bold text-4xl uppercase text-mint_brand">
+              <p className="mb-3 font-bold text-4xl uppercase text-black">
                 Launch and distribute tokens
               </p>
               <div className="lg:h-0 lg:flex-grow lg:flex lg:justify-between lg:flex-col">
@@ -388,7 +388,7 @@ const ClientPage = () => {
                           src={src}
                           width={128}
                           height={128}
-                          className="h-6"
+                          className="h-5"
                           alt=""
                         />
                       ),
@@ -398,7 +398,7 @@ const ClientPage = () => {
               </div>
             </div>
             <div className="row-span-4 bg-mint_brand rounded-3xl border border-black flex flex-col p-6 lg:p-10 shadow-card">
-              <p className="mb-3 font-bold text-4xl text-orange_brand uppercase">
+              <p className="mb-3 font-bold text-4xl text-black uppercase">
                 We have API&apos;s covered
               </p>
               <div className="lg:h-0 lg:flex-grow lg:flex lg:justify-between lg:flex-col">

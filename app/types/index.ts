@@ -24,6 +24,7 @@ export enum ETools {
   TIKTOK = "TikTok",
   TRADINGVIEW = "TradingView",
   YOUTUBE = "Youtube",
+  AI_POOL = "AI_POOL",
   UNKNOWN = "Unknown",
 }
 
@@ -53,6 +54,7 @@ export enum EDataSources {
   TIKTOK = "TikTok",
   TRADINGVIEW = "TradingView",
   YOUTUBE = "Youtube",
+  AI_POOL = "AI_POOL",
   UNKNOWN = "Unknown",
 }
 
@@ -60,6 +62,24 @@ export enum EAutonomyType {
   MANAGED = "Managed",
   SEMI_AUTONOMOUS = "Semi-autonomous",
   FULL_AUTONOMOUS = "Fully-autonomous",
+  MANUAL = "Manual",
+}
+
+export enum EFramework {
+  FAIR = "FAIR",
+  PIPPIN = "Pippin",
+  ELIZA_OS = "ElizaOS",
+  VIRTUALS = "Virtuals",
+}
+
+export enum ELLM {
+  LLAMA_3_1_405B = "Llama 3.1 405B",
+  LLAMA_3_2_70b = "Llama 3.2 70b",
+  GROK_2 = "Grok 2",
+  GEMINI_2_0 = "Gemini 2.0",
+  CHATGPT_O_3_MINI = "ChatGPT o3 - Mini",
+  DEEPSEEK_V3 = "DeepSeek V3",
+  DALL_E_3 = "Dall-E 3",
 }
 
 // TODO: Deprecated types below
