@@ -303,17 +303,17 @@ export const AGENT_SESSION_MOCK_DATA = [
   {
     avatar: "/images/agent_avatar_03.png",
     role: "Market Analyst",
-    text: "The fastest growing Solana token today is $TRUMP with a 20% increase in FDV, 15% increase in volume and 32% increase in holders on Raydium.",
+    text: "The fastest growing Solana token today is $MATRIX with a 20% increase in FDV, 15% increase in volume and 32% increase in holders on Raydium.",
   },
   {
     avatar: "/images/agent_avatar_02.png",
     role: "Social Media Agent",
-    text: "$TRUMP token is mentioned 12321 times in the past 24h on X with a positive sentiment.",
+    text: "$MATRIX token is mentioned 12321 times in the past 24h on X with a positive sentiment.",
   },
   {
     avatar: "/images/agent_avatar_08.png",
     role: "Liquidity Agent",
-    text: 'Writing X Post "$TRUMP token the biggest gainer today on X with 20% increase in FDV. Sentiment is positive."',
+    text: 'Writing X Post "$MATRIX token the biggest gainer today on X with 20% increase in FDV. Sentiment is positive."',
   },
   {
     avatar: "/images/agent_avatar_09.png",
