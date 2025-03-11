@@ -272,7 +272,7 @@ export default function Page() {
                   EARN $FAIR FOR MARKETING
                 </p>
                 <p className="mb-8 text-black uppercase">
-                  MENTION @fAIRDOTTOKEN ON X AND DRIVE MINDSHARE. OUR AI WILL
+                  MENTION @MatrixOneAI ON X AND DRIVE MINDSHARE. OUR AI WILL
                   MEASURE YOUR POST AND YOU WILL RECEIVE $fAIR VIA THE TOKEN
                   UNLOCK. .
                 </p>
