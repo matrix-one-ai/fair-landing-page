@@ -93,15 +93,10 @@ export const AGENTS = [
     role: "Webscraper",
     description:
       "A Copywriter agent that create blog posts, social media posts, FAQ’s, email responses for your community in the tone of voice for your project.",
-    llm: ELLM.DEEPSEEK_V3,
-    framework: EFramework.ELIZA_OS,
-    tools: [ETools.SEND_AI],
-    dataSources: [
-      EDataSources.RAYDIUM,
-      EDataSources.METEORA,
-      EDataSources.JUPITER,
-      EDataSources.UNKNOWN,
-    ],
+    llm: ELLM.CHATGPT_O_3_MINI,
+    framework: EFramework.FAIR,
+    tools: [ETools.GRAMMARLY, ETools.GITBOOK, ETools.MASHABLE, ETools.NOTION],
+    dataSources: [EDataSources.MASHABLE, EDataSources.GITHUB],
     autonomyType: EAutonomyType.FULL_AUTONOMOUS,
   },
   {
@@ -122,10 +117,15 @@ export const AGENTS = [
     role: "Liquidity Agent",
     description:
       "A Liquidity agent that constantly monitors liquidity pools on Meteora making sure liquidity ir provided at all values.",
-    llm: ELLM.CHATGPT_O_3_MINI,
-    framework: EFramework.FAIR,
-    tools: [ETools.GRAMMARLY, ETools.GITBOOK, ETools.MASHABLE, ETools.NOTION],
-    dataSources: [EDataSources.MASHABLE, EDataSources.GITHUB],
+    llm: ELLM.DEEPSEEK_V3,
+    framework: EFramework.ELIZA_OS,
+    tools: [ETools.SEND_AI],
+    dataSources: [
+      EDataSources.RAYDIUM,
+      EDataSources.METEORA,
+      EDataSources.JUPITER,
+      EDataSources.UNKNOWN,
+    ],
     autonomyType: EAutonomyType.MANAGED,
   },
   {
