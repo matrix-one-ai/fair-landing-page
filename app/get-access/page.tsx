@@ -216,9 +216,11 @@ export default function Page() {
       const code = e.currentTarget.value;
 
       setCopiedCode(code);
-      copy(code);
+      copy(
+        `https://form.typeform.com/to/TtFYpp0H#twitter_handle=${fairUser?.twitter_handle}&invite_code=${code}`,
+      );
     },
-    [],
+    [fairUser?.twitter_handle],
   );
 
   return (
