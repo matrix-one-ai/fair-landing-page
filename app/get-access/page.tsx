@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import {
   usePrivy,
   useLogin,
@@ -15,6 +16,8 @@ import FAQ from "@/app/components/FAQ";
 import { generateInvitationCodes } from "@/app/utils/generateInviteCodes";
 import { TFairUser } from "@/app/types";
 import { useToggle } from "@/app/hooks/useToggle";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
 export default function Page() {
   const { ready, authenticated, user } = usePrivy();
@@ -219,120 +222,128 @@ export default function Page() {
   );
 
   return (
-    <div className="flex w-full flex-col text-black items-center">
-      <div className="flex justify-center w-full bg-gradient-to-b from-gray_secondary to-gray">
-        <div className="w-full max-w-[1400px] flex flex-col px-7 justify-between pt-16 pb-12 gap-16 lg:pt-32 lg:pb-24 lg:gap-32">
-          <div className="flex flex-col gap-6 items-center flex-1">
-            <span className="text-center font-bold text-5xl uppercase">
-              Get Access to fair
-            </span>
-            <span className="text-center uppercase">
-              Join us in automating any crypto project with a team of ai agents
-            </span>
-          </div>
-          <div className="gap-4 flex flex-col lg:grid lg:grid-cols-3">
-            <div className="bg-black rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1">
-              <div className="">
-                <p className="mb-3 font-bold text-4xl text-orange_brand uppercase">
-                  CREATE A TEAM
-                </p>
-                <p className="mb-8 text-gray uppercase">
-                  GET ACCESS TO OUR FRAMEWORK SO YOU CAN LAUNCH OR AUTOMATE ANY
-                  CRYPTO PROJECT WITH A TEAM OF AI AGENTS. OUR TEAM WORKS WITH
-                  YOU HANDS ON TO AUTOMATE YOUR CRYPTO PROJECT. APPLICANTS WITH
-                  AN ACCESS CODE ARE PRIORITIZED.
-                </p>
-              </div>
-              <button className="bg-orange_brand rounded-[10px] drop-shadow-button text-black font-bold px-6 pb-4 pt-5 hover:bg-gray_secondary_text hover:text-white">
-                BOOK A CALL
-              </button>
+    <main className="flex flex-col items-center justify-center">
+      <Header />
+      <div className="flex w-full flex-col text-black items-center">
+        <div className="flex justify-center w-full bg-gradient-to-b from-gray_secondary to-gray">
+          <div className="w-full max-w-[1400px] flex flex-col px-7 justify-between pt-16 pb-12 gap-16 lg:pt-32 lg:pb-24 lg:gap-32">
+            <div className="flex flex-col gap-6 items-center flex-1">
+              <span className="text-center font-bold text-5xl uppercase">
+                Get Access to fair
+              </span>
+              <span className="text-center uppercase">
+                Join us in automating any crypto project with a team of ai
+                agents
+              </span>
             </div>
-            <div className="bg-transparent rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1">
-              <div className="">
-                <p className="mb-3 font-bold text-4xl text-black uppercase">
-                  EARN $FAIR FOR SALES
-                </p>
-                <p className="mb-8 text-black uppercase">
-                  YOU WILL RECEIVE 5 INVITE CODES ONLY TO GIVE USERS FIRST
-                  ACCESS TO THE FAIR PLATFORM. RECEIVE A SALES COMMISSION VIA
-                  THE $FAIR TOKEN UNLOCK.
-                </p>
-              </div>
-              <button
-                className="bg-orange_brand rounded-[10px] drop-shadow-button text-black font-bold px-6 pb-4 pt-5 hover:bg-gray_secondary_text hover:text-white"
-                onClick={handleInviteCodeButtonClick}
-                disabled={!ready}
-              >
-                {fairUser ? "VIEW YOUR INVITE CODES" : "GET INVITE CODES"}
-              </button>
-            </div>
-            <div className="bg-mint_brand rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1">
-              <div className="">
-                <p className="mb-3 font-bold text-4xl text-black uppercase">
-                  EARN $FAIR FOR MARKETING
-                </p>
-                <p className="mb-8 text-black uppercase">
-                  MENTION @MatrixOneAI ON X AND DRIVE MINDSHARE. OUR AI WILL
-                  MEASURE YOUR POST AND YOU WILL RECEIVE $fAIR VIA THE TOKEN
-                  UNLOCK. .
-                </p>
-              </div>
-              <button
-                className="bg-orange_brand rounded-[10px] drop-shadow-button text-black font-bold px-6 pb-4 pt-5 hover:bg-gray_secondary_text hover:text-white"
-                onClick={handleVerifyXButtonClick}
-                disabled={!ready}
-              >
-                {fairUser ? "CHECK MY MARKETING" : "VERIFY MY X"}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="py-3 px-7 flex justify-center w-full bg-gradient-to-b from-gray to-gray_secondary">
-        <FAQ />
-      </div>
-      {/* Modals */}
-      {showInvitationCodesModal && fairUser && (
-        <div className="fixed top-0 left-0 w-full h-full">
-          <div
-            className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-100"
-            onClick={toggleOffShowInvitationCodesModal}
-          />
-          <div className="w-4/5 max-w-[600px] bg-black rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="w-full">
-              <p className="mb-1 font-bold text-2xl lg:text-4xl text-orange_brand uppercase">
-                YOUR UNIQUE INVITE CODES
-              </p>
-              <p className="mb-2 text-sm lg:text-base text-gray uppercase">
-                THESE ARE YOUR EXCLUSIVE CODES. CLICK TO COPY AND SHARE WITH ANY
-                OTHER PROJECTS SO THEY GET PRIORITIZED ACCESS TO FAIR. YOU WILL
-                RECEIVE $FAIR FOR ANY PROJECT THAT WORKS WITH US USING THESE
-                CODES. CLICK TO COPY THE CODE AND INVITE URL TO SHARE.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-1 lg:grid-cols-3">
-              {JSON.parse(fairUser.invite_codes).map((code: string) => (
-                <button
-                  key={code}
-                  className={clsx(
-                    "relative p-2 border-gray text-sm lg:text-base text-gray border rounded",
-                    copiedCode === code && "!bg-gray !text-black",
-                  )}
-                  value={code}
-                  onClick={handleCodeCopy}
+            <div className="gap-4 flex flex-col lg:grid lg:grid-cols-3">
+              <div className="bg-black rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1">
+                <div className="">
+                  <p className="mb-3 font-bold text-4xl text-orange_brand uppercase">
+                    CREATE A TEAM
+                  </p>
+                  <p className="mb-8 text-gray uppercase">
+                    GET ACCESS TO OUR FRAMEWORK SO YOU CAN LAUNCH OR AUTOMATE
+                    ANY CRYPTO PROJECT WITH A TEAM OF AI AGENTS. OUR TEAM WORKS
+                    WITH YOU HANDS ON TO AUTOMATE YOUR CRYPTO PROJECT.
+                    APPLICANTS WITH AN ACCESS CODE ARE PRIORITIZED.
+                  </p>
+                </div>
+                <Link
+                  href="/get-access/book-call"
+                  className="bg-orange_brand text-center rounded-[10px] drop-shadow-button text-black font-bold px-6 pb-4 pt-5 hover:bg-gray_secondary_text hover:text-white"
                 >
-                  {code}
-                  {copiedCode === code && (
-                    <span className="text-orange_brand text-2xl absolute top-1/2 right-4 -translate-y-1/2">
-                      ✔
-                    </span>
-                  )}
+                  BOOK A CALL
+                </Link>
+              </div>
+              <div className="bg-transparent rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1">
+                <div className="">
+                  <p className="mb-3 font-bold text-4xl text-black uppercase">
+                    EARN $FAIR FOR SALES
+                  </p>
+                  <p className="mb-8 text-black uppercase">
+                    YOU WILL RECEIVE 5 INVITE CODES ONLY TO GIVE USERS FIRST
+                    ACCESS TO THE FAIR PLATFORM. RECEIVE A SALES COMMISSION VIA
+                    THE $FAIR TOKEN UNLOCK.
+                  </p>
+                </div>
+                <button
+                  className="bg-orange_brand rounded-[10px] drop-shadow-button text-black font-bold px-6 pb-4 pt-5 hover:bg-gray_secondary_text hover:text-white"
+                  onClick={handleInviteCodeButtonClick}
+                  disabled={!ready}
+                >
+                  {fairUser ? "VIEW YOUR INVITE CODES" : "GET INVITE CODES"}
                 </button>
-              ))}
+              </div>
+              <div className="bg-mint_brand rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1">
+                <div className="">
+                  <p className="mb-3 font-bold text-4xl text-black uppercase">
+                    EARN $FAIR FOR MARKETING
+                  </p>
+                  <p className="mb-8 text-black uppercase">
+                    MENTION @MatrixOneAI ON X AND DRIVE MINDSHARE. OUR AI WILL
+                    MEASURE YOUR POST AND YOU WILL RECEIVE $fAIR VIA THE TOKEN
+                    UNLOCK. .
+                  </p>
+                </div>
+                <button
+                  className="bg-orange_brand rounded-[10px] drop-shadow-button text-black font-bold px-6 pb-4 pt-5 hover:bg-gray_secondary_text hover:text-white"
+                  onClick={handleVerifyXButtonClick}
+                  disabled={!ready}
+                >
+                  {fairUser ? "CHECK MY MARKETING" : "VERIFY MY X"}
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      )}
-    </div>
+        <div className="py-3 px-7 flex justify-center w-full bg-gradient-to-b from-gray to-gray_secondary">
+          <FAQ />
+        </div>
+        {/* Modals */}
+        {showInvitationCodesModal && fairUser && (
+          <div className="fixed top-0 left-0 w-full h-full">
+            <div
+              className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-100"
+              onClick={toggleOffShowInvitationCodesModal}
+            />
+            <div className="w-4/5 max-w-[600px] bg-black rounded-3xl border border-black flex flex-col justify-between p-6 lg:p-10 shadow-card flex-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="w-full">
+                <p className="mb-1 font-bold text-2xl lg:text-4xl text-orange_brand uppercase">
+                  YOUR UNIQUE INVITE CODES
+                </p>
+                <p className="mb-2 text-sm lg:text-base text-gray uppercase">
+                  THESE ARE YOUR EXCLUSIVE CODES. CLICK TO COPY AND SHARE WITH
+                  ANY OTHER PROJECTS SO THEY GET PRIORITIZED ACCESS TO FAIR. YOU
+                  WILL RECEIVE $FAIR FOR ANY PROJECT THAT WORKS WITH US USING
+                  THESE CODES. CLICK TO COPY THE CODE AND INVITE URL TO SHARE.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-1 lg:grid-cols-3">
+                {JSON.parse(fairUser.invite_codes).map((code: string) => (
+                  <button
+                    key={code}
+                    className={clsx(
+                      "relative p-2 border-gray text-sm lg:text-base text-gray border rounded",
+                      copiedCode === code && "!bg-gray !text-black",
+                    )}
+                    value={code}
+                    onClick={handleCodeCopy}
+                  >
+                    {code}
+                    {copiedCode === code && (
+                      <span className="text-orange_brand text-2xl absolute top-1/2 right-4 -translate-y-1/2">
+                        ✔
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+      <Footer />
+    </main>
   );
 }
