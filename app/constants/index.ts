@@ -235,7 +235,7 @@ export const FAQs = [
   {
     title: "What is FAIR? Is it an agency or a framework?",
     content:
-      "FAIR is both an agency and a framework. As an agency, we work hands-on with crypto projects to design, deploy, and manage fully automated AI multi-agent teams tailored to your needs. These teams can automate a wide range of processes including Social Media Management, Market Analysis, Community Management, Airdrop Automation, Liquidity Management, Token Launches, Copywriting, Image & Video Creation, and even Coding. As a framework, FAIR leverages Microsoft's open-source AutoGen Studio, allowing for seamless integration, customization, and scalability of AI agents. You'll have direct access to a dedicated customer support agent throughout your journey.",
+      "FAIR is both an agency and a framework. As an agency, we work hands-on with crypto projects to design, deploy, and manage fully automated AI multi-agent teams tailored to your needs. These teams can automate a wide range of processes including Social Media Management, Market Analysis, Community Management, Airdrop Automation, Liquidity Management, Token Launches, Copywriting, Image & Video Creation, and even Coding. As a framework, FAIR leverages open-source frameworks, allowing for seamless integration, customization, and scalability of AI agents. You'll have direct access to a dedicated customer support managers throughout your journey.",
   },
   {
     title: "Is there a FAIR token?",
@@ -248,11 +248,6 @@ export const FAQs = [
       "By automating repetitive and resource-intensive tasks, FAIR significantly reduces operational costs. Our cloud-hosted, enterprise-grade software runs 24/7 on Microsoft Azure, ensuring reliability and scalability. We begin by assessing your project’s processes to identify automation opportunities, then build and deploy a custom AI agent team. You can choose to manage this team manually, semi-autonomously, or fully autonomously, allowing you to focus on strategic growth while reducing overhead.",
   },
   {
-    title: "What is your tech stack?",
-    content:
-      "Our team management system is built on Microsoft's AutoGen framework, an open-source multi-agent platform with over 39k stars on GitHub and 447 contributors. AutoGen allows us to integrate AI agents from other leading providers like ElizaOS, TopHat, Virtuals, Pippin, Arc, and ZerePy. Hosted on Microsoft Azure, our infrastructure benefits from enterprise-grade security, reliability, and scalability. Additionally, we are part of the Microsoft for Startups Program and actively contribute custom extensions to AutoGen, tailored for the crypto industry's unique needs.",
-  },
-  {
     title: "Can I integrate AI agents from other frameworks into FAIR?",
     content:
       "Absolutely. FAIR supports seamless integration of AI agents from various frameworks, including OpenAI, Anthropic, ElizaOS, TopHat, Virtuals, Pippin, Arc, and ZerePy. This flexibility allows you to build a diverse and powerful multi-agent team tailored to your project's specific needs.",
@@ -260,7 +255,7 @@ export const FAQs = [
   {
     title: "What makes FAIR different from other AI automation platforms?",
     content:
-      "FAIR stands out due to its dual role as both a hands-on agency and a robust technical framework. Unlike generic AI solutions, FAIR is specifically designed for the crypto industry, offering tailored automation for critical project processes. Our deep integration with Microsoft's AutoGen Studio, combined with our active development of custom extensions for crypto use cases, ensures unmatched flexibility, scalability, and efficiency. Plus, our tokenomics model incentivizes ecosystem growth and rewards both users and contributors.",
+      "FAIR stands out due to its dual role as both a hands-on agency and a robust technical framework. Unlike generic AI solutions, FAIR is specifically designed for the crypto industry, offering tailored automation for critical project processes. Our active development of custom extensions for crypto use cases, ensures unmatched flexibility, scalability, and efficiency. Plus, our tokenomics model incentivizes ecosystem growth and rewards both users and contributors.",
   },
   {
     title: "Who is behind FAIR?",

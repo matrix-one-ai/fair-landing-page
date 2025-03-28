@@ -293,18 +293,16 @@ const ClientPage = () => {
                 </p>
                 <p className="font-bold text-orange_brand">Powered by</p>
                 <div className="flex gap-2">
-                  {["/images/image_12.png", "/images/image_13.png"].map(
-                    (src) => (
-                      <Image
-                        key={src}
-                        src={src}
-                        width={32}
-                        height={32}
-                        className="h-8 object-contain"
-                        alt=""
-                      />
-                    ),
-                  )}
+                  {["/images/image_13.png"].map((src) => (
+                    <Image
+                      key={src}
+                      src={src}
+                      width={32}
+                      height={32}
+                      className="h-8 object-contain"
+                      alt=""
+                    />
+                  ))}
                 </div>
               </div>
               <div className="row-span-7 bg-black rounded-3xl border border-black flex flex-col p-6 lg:p-10 shadow-card">
